@@ -11,6 +11,6 @@
     "isolatedModules": true,
     "esModuleInterop": true
     },
-    "include": ["src", "src/components/Container"],
-    "exclude": ["node_moduies"]
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules"]
 }
