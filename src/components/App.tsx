@@ -5,6 +5,7 @@ import Main from './Main'
 import Header from './Header'
 import Footer from './Footer'
 import Home_page from '../pages/Home_page'
+import Account_page from '../pages/Account_page'
 import Cart_page from '../pages/Cart_page'
 import Checkout_page from '../pages/Checkout_page'
 import Login_page from '../pages/Login_page'
@@ -24,6 +25,7 @@ const  App: React.FC = () => {
           <Route path="shop" element={<Shop_page />} />
           <Route path="shop/:id" element={<ProductDetails_page />} />
           <Route path="cart" element={<Cart_page />} />
+          <Route path="account" element={<Account_page />} />
           <Route path="checkout" element={<Checkout_page />} />
           <Route path="login" element={<Login_page />} />
           <Route path="signup" element={<Signup_page />} />
