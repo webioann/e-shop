@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic);
+@import './@normalize.css';
+
+html,body{
+    font-family: 'Lato', Helvetica, sans-serif; 
+    background-color: #ffffff;
+    width: 100%;
+    scroll-behavior: smooth;
+    height: 100%;
+	width: 100%;
+	font-size: 100%;
+    font-size: 14px;
+	line-height: 1;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+@media (min-width: 580px) {
+    html,body{font-size: 15px;}
+}
+@media (min-width: 768px) {
+    html,body{font-size: 16px;}
+}
+@media (min-width: 992px) {
+    html,body{font-size: 17px;}
+}
+@media (min-width: 1200px) {
+    html,body{font-size: 18px;}
+}
+
+// === VARIABLES ===
+
+$big-pad: 1rem;
+
+// === GLOBAL CLASSES ===
+.g-stretched{
+    flex: 1;
+}

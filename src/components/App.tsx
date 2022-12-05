@@ -1,6 +1,9 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
-
+import Container from './Container'
+import Main from './Main'
+import Header from './Header'
+import Footer from './Footer'
 import Home_page from '../pages/Home_page'
 import Cart_page from '../pages/Cart_page'
 import Checkout_page from '../pages/Checkout_page'
@@ -13,16 +16,22 @@ import Notfound_page from '../pages/Notfound_page'
 const  App: React.FC = () => {
   
   return (
-    <Routes>
-      <Route path="/" element={<Home_page />} />
-      <Route path="/shop" element={<Shop_page />} />
-      <Route path="/shop/ :id" element={<ProductDetails_page />} />
-      <Route path="/cart" element={<Cart_page />} />
-      <Route path="/checkout" element={<Checkout_page />} />
-      <Route path="/login" element={<Login_page />} />
-      <Route path="/signup" element={<Signup_page />} />
-      <Route path="*" element={<Notfound_page />} />
-    </Routes>
+    <Container>
+      <Header/>
+      <Main>
+        <Routes>
+          <Route path="/" element={<Home_page />} />
+          <Route path="shop" element={<Shop_page />} />
+          <Route path="shop/:id" element={<ProductDetails_page />} />
+          <Route path="cart" element={<Cart_page />} />
+          <Route path="checkout" element={<Checkout_page />} />
+          <Route path="login" element={<Login_page />} />
+          <Route path="signup" element={<Signup_page />} />
+          <Route path="*" element={<Notfound_page />} />
+        </Routes>
+      </Main>
+      <Footer/>
+    </Container>
   )
 }
 
