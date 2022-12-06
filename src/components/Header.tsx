@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useAppSelector, useAppDispatch } from '../redux/store'
 import { Link } from "react-router-dom"
 import SignoutButton from './SignoutButton';
 import { BiUser } from 'react-icons/bi';
@@ -6,6 +7,8 @@ import { IoCartOutline } from 'react-icons/io5';
 import '../style/header.scss'
 
 const Header = () => {
+
+    const user = useAppSelector(state => state.redux.currentUser)
 
     return (
         <header>
@@ -19,7 +22,7 @@ const Header = () => {
             <div className='account-icon'>
                 <Link to="account">
                     <BiUser/>
-                    {/* <p>{auth.currentUser?.email}</p> */}
+                    <p>{user}</p>
                 </Link>
             </div>
             <div className='cart-icon'>
