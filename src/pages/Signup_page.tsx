@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { setCurrentUser } from '../redux/reduxState'
+import { setCurrentUser, setUserAvatar } from '../redux/reduxState'
 import { Link, useNavigate } from 'react-router-dom'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
@@ -17,12 +17,12 @@ const Signup_page = () => {
     const [inputType,setInputType] = useState<string>('password')
     const [warning,setWarning] = useState<boolean>(false)
     const navigate = useNavigate()
-    const dispath = useAppDispatch()
+    const dispatch = useAppDispatch()
 
     const emailRegistration = async () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, email, password)
-            dispath(setCurrentUser(user.user.email))
+            dispatch(setCurrentUser(user.user.email))
             navigate("/")
         }
         catch(error){
@@ -34,7 +34,8 @@ const Signup_page = () => {
     const googleRegistration = async () => {
         try {
             const user = await signInWithPopup(auth, provider)
-            dispath(setCurrentUser(user.user.email))
+            dispatch(setCurrentUser(user.user.email))
+            dispatch(setUserAvatar(user.user.photoURL))
             navigate('/')
         }
         catch(error) {console.error(error)} 

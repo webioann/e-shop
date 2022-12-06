@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useAppSelector, useAppDispatch } from '../redux/store'
+import { useAppSelector } from '../redux/store'
 import { Link } from "react-router-dom"
 import SignoutButton from './SignoutButton';
 import { BiUser } from 'react-icons/bi';
@@ -19,6 +19,24 @@ const Header = () => {
                 <Link to="/signup">Signup</Link>
                 <SignoutButton/>
             </nav>
+
+            { user ? (
+                    <>
+                        <Link to="/account" className={`account ${theme}-account`}>
+                            <div className='img-wrapper'>
+                                { user_photo !== null ? (<img src={user_photo} alt='user photo'/>) : <FaRegUser/> }
+                            </div>
+                            <span className='user-name'>{user}</span>
+                        </Link>
+                        <SignOut/>
+                    </>
+                    ) : (
+                    <>
+                        <Link to="/signin" className={`link ${theme}-nl`} onClick={() => setActive(false)}>Login</Link>
+                        <Link to="/signup" className={`link ${theme}-nl`} onClick={() => setActive(false)}>Sign Up</Link>
+                    </>
+                ) 
+            }
             <div className='account-icon'>
                 <Link to="account">
                     <BiUser/>
