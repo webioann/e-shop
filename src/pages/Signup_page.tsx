@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import { useAppSelector,useAppDispatch } from '../Redux/store'
-// import { putUser } from '../Redux/reduxSlice'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
 import Popup from '../components/Popup'
-// import { deleteUserPhoto } from '../Redux/reduxSlice'
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth"
-import { doc, setDoc } from 'firebase/firestore'
+// import { doc, setDoc } from 'firebase/firestore'
 import { auth, provider, db } from '../firebase.config';
 import '../style/signup-page.scss'
 
@@ -17,7 +14,6 @@ const Signup_page = () => {
     const [password,setPassword] = useState<string>('')
     const [inputType,setInputType] = useState<string>('password')
     const [warning,setWarning] = useState<boolean>(false)
-    // const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     const emailRegistration = async () => {
@@ -31,6 +27,7 @@ const Signup_page = () => {
             setWarning(true)
         }
     }
+    
     const googleRegistration = async () => {
         try {
             const user = await signInWithPopup(auth, provider)

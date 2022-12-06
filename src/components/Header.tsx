@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import SignoutButton from './SignoutButton';
 import { BiUser } from 'react-icons/bi';
@@ -6,6 +6,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import '../style/header.scss'
 
 const Header = () => {
+
     return (
         <header>
             <nav>
@@ -18,6 +19,7 @@ const Header = () => {
             <div className='account-icon'>
                 <Link to="account">
                     <BiUser/>
+                    {/* <p>{auth.currentUser?.email}</p> */}
                 </Link>
             </div>
             <div className='cart-icon'>

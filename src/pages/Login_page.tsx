@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import { useAppSelector,useAppDispatch } from '../Redux/store'
-// import { putUser } from '../Redux/reduxSlice'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
 import Popup from '../components/Popup'
-// import { deleteUserPhoto } from '../Redux/reduxSlice'
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
-import { doc, setDoc } from 'firebase/firestore'
+// import { doc, setDoc } from 'firebase/firestore'
 import { auth, provider, db } from '../firebase.config';
 import '../style/signup-page.scss'
 
@@ -17,26 +14,25 @@ const Login_page = () => {
     const [password,setPassword] = useState<string>('')
     const [inputType,setInputType] = useState<string>('password')
     const [warning,setWarning] = useState<boolean>(false)
-    // const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     const loginWithEmail = async () => {
         try {
             const user = await signInWithEmailAndPassword(auth, email, password)
             navigate("/")
-            console.log(user)
+            console.log(`EMAIL USER ${JSON.stringify(user)}`)
         }
         catch(error){
             console.log(error)
             setWarning(true)
         }
-
     }
 
     const googleRegistration = async () => {
         try {
             const user = await signInWithPopup(auth, provider)
             navigate('/')
+            console.log(`GOOGLE USER ${user}`);
         }
         catch(error) {console.error(error)} 
     }
