@@ -4,8 +4,16 @@ type InitialStateType = {
     currentUser: string | null;
     userAvatar: string | null;
 }
-const storedUserAvatar = localStorage.getItem('userAvatar') || null;
-const storedUser = localStorage.getItem('currentUser') || null;
+// const storedUserAvatar = localStorage.getItem('userAvatar') || null;
+// const storedUser = localStorage.getItem('currentUser') || null;
+
+const getUser: string | null  = localStorage.getItem("currentUser");
+let storedUser;
+getUser === 'string' ?  storedUser = JSON.parse(getUser) : storedUser = null
+
+const avatar: string | null  = localStorage.getItem("userAvatar");
+let storedUserAvatar;
+avatar === 'string' ?  storedUserAvatar = JSON.parse(avatar) : storedUserAvatar = null
 
 const initialState: InitialStateType = {
     currentUser: storedUser,
