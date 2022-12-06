@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import AccountEntryPoint from './AccountEntryPoint'
-import { IoCartOutline } from 'react-icons/io5';
+import CartIcon from './CartIcon'
 import '../style/header.scss'
 
 const Header = () => {
@@ -14,12 +14,7 @@ const Header = () => {
             </nav>
 
             <AccountEntryPoint/>
-
-            <div className='cart-icon'>
-                <Link to="cart">
-                    <IoCartOutline/>
-                </Link>
-            </div>
+            <CartIcon/>
         </header>
     )
 }
