@@ -31,6 +31,27 @@ html,body{
 // === VARIABLES ===
 
 $big-pad: 1rem;
+$text-carrot: #f85904;
+$text-blue: #5388cd;
+
+$bg-hover: rgba(0,0,0,0.1);
+$bg-active: rgba(0,0,0,0.2);
+$spark-line: #5388cd;
+
+// ===== light theme =====
+$bg-light: #ffffff;
+$text-dark: #212529;
+$box-shadow-lt: 0px 0px 10px 2px rgba(0,0,0,0.1);
+$bg-active-light: rgba(0,0,0,0.04);
+// ===== dark theme =====
+$bg-dark: #2e3137;
+// $bg-dark: green;
+$text-light: #e8eaed;
+$bg-block-dark: #3c4043;
+// ===== sizes =====
+$button-max-size: 120px;
+$button-min-size: 90px;
+$button-big: 180px;
 
 // === GLOBAL CLASSES ===
 .g-stretched{
