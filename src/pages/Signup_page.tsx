@@ -19,13 +19,16 @@ const Signup_page = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            console.log(`UID === ${user.email}`)
-            dispatch(setCurrentUser(user.email))
-            dispatch(setUserAvatar(user.photoURL))
-        } 
-    })
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         console.log(`UID === ${user.email}`)
+    //         // dispatch(setCurrentUser(user.email))
+    //         // dispatch(setUserAvatar(user.photoURL))
+    //     } 
+    //     else{
+    //         console.log(`USER LOGOUT`);
+    //     }
+    // })
 
     const emailRegistration = async () => {
         try {
