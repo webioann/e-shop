@@ -13,12 +13,8 @@ import ProductDetails_page from '../pages/ProductDetails_page'
 import Shop_page from '../pages/Shop_page'
 import Signup_page from '../pages/Signup_page'
 import Notfound_page from '../pages/Notfound_page'
-import { useLocalStorage } from '../hooks/useLocalStorage'
 
 const  App: React.FC = () => {
-  
-  // start work LocalStorage in all App
-  useLocalStorage();
   
   return (
     <Container>
