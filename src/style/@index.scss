@@ -49,6 +49,7 @@ $button-max-size: 120px;
 $button-min-size: 90px;
 $button-big: 180px;
 $max-mobile: 290px;
+$br-medium: 6px;
 // === GLOBAL CLASSES ===
 .g-stretched{
     flex: 1;
@@ -60,7 +61,7 @@ $max-mobile: 290px;
     justify-content: center;
     align-items: center;
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: $br-medium;
     color: $text-blue;
     font-weight: 700;
     cursor: pointer;

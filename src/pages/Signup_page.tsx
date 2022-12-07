@@ -90,8 +90,9 @@ const Signup_page = () => {
                         }
                     </div>
                 </div>
-                <button className='btn' onClick={emailRegistration}>Sign Up</button>
-                <button className='btn' onClick={googleRegistration}>
+                <button className='auth-button' onClick={emailRegistration}>Sign Up</button>
+                <div className='or-line'>---- or other variant ----</div>
+                <button className='auth-button' onClick={googleRegistration}>
                     Sign Up with Google 
                 </button>
             </form>

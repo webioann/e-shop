@@ -14,7 +14,11 @@ const CartIcon = () => {
         <div className='cart-icon'>
             { cartCount > 0 &&  <span className={cartCount > 9 ? 'badge long-badge' : 'badge'}>{cartCount}</span>}
             <Link to="/cart">
-                <IoCartOutline size={24} onClick={() => dispatch(incremented())}/>
+                <IoCartOutline 
+                    size={24}
+                    color='#212529' 
+                    onClick={() => dispatch(incremented())}
+                />
             </Link>
         </div>
     )

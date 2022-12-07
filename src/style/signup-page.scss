@@ -5,9 +5,7 @@
     margin: 0 auto;
     padding: 100px 1rem 2rem 1rem;
     padding-bottom: 20px;
-
-                    background-color: #ccc;    
-
+    color: $text-dark;
     .header{
         font-weight: 600;
     }
@@ -20,12 +18,14 @@
                 font-weight: 600;
             }
             .email-input-box{
+                box-shadow: $box-shadow-lt;
+                background-color: $bg-light;
                 width: 100%;
                 margin-top: 10px;
                 display: flex;
                 align-items: center;
                 padding: 0.5rem 1rem;
-                border-radius: 0.5rem;
+                border-radius: $br-medium;
                 position: relative;
                 input{
                     width: 100%;
@@ -49,12 +49,14 @@
                 font-weight: 600;
             }
             .password-input-box{
+                box-shadow: $box-shadow-lt;
+                background-color: $bg-light;
                 width: 100%;
                 margin-top: 10px;
                 display: flex;
                 align-items: center;
                 padding: 0.5rem 1rem;
-                border-radius: 0.5rem;
+                border-radius: $br-medium;
                 position: relative;
                 input{
                     width: 100%;
@@ -70,18 +72,26 @@
                 }
             }
         }
-        .btn{
+        .auth-button{
             width: 100%;
             margin-top: 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+            border-radius: $br-medium;
             font-weight: 600;
             background-color: $text-blue;
             color: $text-light;
             position: relative;
+        }
+        .auth-button:last-child{
+            margin-top: 0;
+        }
+        .or-line{
+            display: flex;
+            justify-content: center;
+            padding: 20px;
         }
     }
     .question{
@@ -90,6 +100,7 @@
         align-items: center;
         .question-text{
             margin-right: 0.5rem;
+            flex: 1;
         }
         .question-link{
             color: $text-blue;

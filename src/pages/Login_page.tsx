@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { setCurrentUser, setUserAvatar } from '../redux/reduxState'
-
 import { Link, useNavigate } from 'react-router-dom'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
@@ -88,16 +87,17 @@ const Login_page = () => {
                         }
                     </div>
                 </div>
-                <button className='btn' onClick={loginWithEmail}>
+                <button className='auth-button' onClick={loginWithEmail}>
                     Login with email
                 </button>
-                <button className='btn' onClick={googleRegistration}>
+                <div className='or-line'>---- or other variant ----</div>
+                <button className='auth-button' onClick={googleRegistration}>
                     Login with Google 
                 </button>
             </form>
             <div className='question'>
-                <p className='q-text'>Don't have an account ?</p>
-                <Link to='/signup' className='q-link'>Sing Up</Link>
+                <p className='question-text'>Don't have an account ?</p>
+                <Link to='/signup' className='question-link'>Sign Up</Link>
             </div>        
         </div>
     )}
