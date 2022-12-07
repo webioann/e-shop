@@ -9,26 +9,27 @@ const AccountEntryPoint = () => {
 
     const { currentUser, userAvatar } = useAppSelector(state => state.redux)
 
+    console.log(`USER --> ${currentUser}`)
+
     if ( currentUser ) {
         return (
-            <>
+            <div className='entry-point'>
                 <Link to="/account" className='account'>
                     <div className='img-wrapper'>
-                        { userAvatar !== null ? (<img src={userAvatar} alt='user photo'/>) : <FaUserCircle/> }
+                        { userAvatar !== null ? (<img src={userAvatar} alt='user photo'/>) : <FaUserCircle size={24}/> }
                     </div>
                     <span className='user-name'>{currentUser}</span>
                 </Link>
                 <SignoutButton/>
-            </>
+            </div>
         )
     }
     else {
         return (
-            <>
-                <Link to="/login" className='link'>Login</Link>
-                <Link to="/signup" className='link'>Sign Up</Link>
-                <FaUserCircle/>
-            </>
+            <div className='entry-point'>
+                <Link to="/login" className='g-auth-button'>Login</Link>
+                <Link to="/signup" className='g-auth-button'>Sign Up</Link>
+            </div>
         )
     }
 }

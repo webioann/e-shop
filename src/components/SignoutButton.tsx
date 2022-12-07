@@ -19,7 +19,7 @@ const SignoutButton = () => {
     }
 
     return (
-        <button onClick={signOutUser} className={`link light-sign-out`}>
+        <button onClick={signOutUser} className='g-auth-button'>
             Sing Out
         </button>
     )

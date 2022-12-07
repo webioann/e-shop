@@ -21,11 +21,8 @@ html,body{
 @media (min-width: 768px) {
     html,body{font-size: 16px;}
 }
-@media (min-width: 992px) {
-    html,body{font-size: 17px;}
-}
 @media (min-width: 1200px) {
-    html,body{font-size: 18px;}
+    html,body{font-size: 17px;}
 }
 
 // === VARIABLES ===
@@ -45,15 +42,26 @@ $box-shadow-lt: 0px 0px 10px 2px rgba(0,0,0,0.1);
 $bg-active-light: rgba(0,0,0,0.04);
 // ===== dark theme =====
 $bg-dark: #2e3137;
-// $bg-dark: green;
 $text-light: #e8eaed;
 $bg-block-dark: #3c4043;
 // ===== sizes =====
 $button-max-size: 120px;
 $button-min-size: 90px;
 $button-big: 180px;
-
+$max-mobile: 290px;
 // === GLOBAL CLASSES ===
 .g-stretched{
     flex: 1;
+}
+.g-auth-button{
+    max-width: 120px;
+    box-shadow: $box-shadow-lt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: $text-blue;
+    font-weight: 700;
+    cursor: pointer;
 }

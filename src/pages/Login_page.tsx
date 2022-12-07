@@ -25,7 +25,6 @@ const Login_page = () => {
             const user = await signInWithEmailAndPassword(auth, email, password)
             navigate("/")
             dispatch(setCurrentUser(user.user.email))
-            console.log(user.user.email)
         }
         catch(error){
             console.log(error)
@@ -39,7 +38,6 @@ const Login_page = () => {
             dispatch(setCurrentUser(user.user.email))
             dispatch(setUserAvatar(user.user.photoURL))
             navigate('/')
-            console.log(user);
         }
         catch(error) {console.error(error)} 
     }
