@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
 import Popup from '../components/Popup'
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth"
 // import { doc, setDoc } from 'firebase/firestore'
 import { auth, provider, db } from '../firebase.config';
 import '../style/signup-page.scss'
@@ -18,6 +18,14 @@ const Signup_page = () => {
     const [warning,setWarning] = useState<boolean>(false)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log(`UID === ${user.email}`)
+            dispatch(setCurrentUser(user.email))
+            dispatch(setUserAvatar(user.photoURL))
+        } 
+    })
 
     const emailRegistration = async () => {
         try {

@@ -9,8 +9,6 @@ const AccountEntryPoint = () => {
 
     const { currentUser, userAvatar } = useAppSelector(state => state.redux)
 
-    console.log(`USER --> ${currentUser}`)
-
     if ( currentUser ) {
         return (
             <div className='entry-point'>

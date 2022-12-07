@@ -8,6 +8,10 @@ const initialState: InitialStateType = {
     currentUser: localStorage.getItem("currentUser"),
     userAvatar: localStorage.getItem("userAvatar")
 }
+// const initialState: InitialStateType = {
+//     currentUser: null,
+//     userAvatar: null
+// }
 
 export const reduxState = createSlice({
     name: "redux",
