@@ -6,9 +6,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
 import Popup from '../../components/Popup/Popup'
+import SigninWithGoogle from '../../auth/Signin/SigninWithGoogle'
+import FormRegistration from '../../auth/FormRegistration/FormRegistration';
 import ModalCloseButton from '../../components/ModalCloseButton/ModalCloseButton'
-import { signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth"
-import { auth, provider } from '../../firebase.config';
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../../firebase.config';
 import './login-page.scss'
 
 const Login_page = () => {
@@ -32,16 +34,6 @@ const Login_page = () => {
         }
     }
 
-    const googleRegistration = async () => {
-        try {
-            const user = await signInWithPopup(auth, provider)
-            dispatch(setCurrentUser(user.user.email))
-            dispatch(setUserAvatar(user.user.photoURL))
-            navigate(-1)
-        }
-        catch(error) {console.error(error)} 
-    }
-
     const showPassword = () => {
         inputType === 'password' ? setInputType('text') : setInputType('password')
     }
@@ -54,6 +46,8 @@ const Login_page = () => {
         <div className={`signup-wrapper`}>
             <h1 className='header'>Login</h1>
             <ModalCloseButton/>
+
+            <FormRegistration/>
 
             <form onSubmit={event => event.preventDefault() }>
                 { warning && <Popup closePopup={closePopup}/>}
@@ -85,13 +79,10 @@ const Login_page = () => {
 
             </form>
             <button className='auth-button' onClick={loginWithEmail}>
-                    Login with email
-                </button>
-                <div className='or-line'>---- or other variant ----</div>
-                <button className='auth-button' onClick={googleRegistration}>
-                    Login with Google 
-                </button>
-
+                Login with email
+            </button>
+            <div className='or-line'>---- or other variant ----</div>
+            <SigninWithGoogle/>
             <div className='question'>
                 <p className='question-text'>Don't have an account ?</p>
                 <Link 

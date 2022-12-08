@@ -7,9 +7,9 @@ import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
 import Popup from '../../components/Popup/Popup'
 import ModalCloseButton from '../../components/ModalCloseButton/ModalCloseButton'
-import { createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth"
-// import { doc, setDoc } from 'firebase/firestore'
-import { auth, provider, db } from '../../firebase.config';
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import SigninWithGoogle from '../../auth/Signin/SigninWithGoogle'
+import { auth } from '../../firebase.config';
 import './signup-page.scss'
 
 const Signup_page = () => {
@@ -31,16 +31,6 @@ const Signup_page = () => {
             console.log(error)
             setWarning(true)
         }
-    }
-    
-    const googleRegistration = async () => {
-        try {
-            const user = await signInWithPopup(auth, provider)
-            dispatch(setCurrentUser(user.user.email))
-            dispatch(setUserAvatar(user.user.photoURL))
-            navigate('/')
-        }
-        catch(error) {console.error(error)} 
     }
 
     const showPassword = () => {
@@ -84,9 +74,10 @@ const Signup_page = () => {
                 </div>
                 <button className='auth-button' onClick={emailRegistration}>Sign Up</button>
                 <div className='or-line'>---- or other variant ----</div>
-                <button className='auth-button' onClick={googleRegistration}>
+                {/* <button className='auth-button' onClick={googleRegistration}>
                     Sign Up with Google 
-                </button>
+                </button> */}
+                <SigninWithGoogle/>
             </form>
             <div className='question'>
                 <p className='question-text'>Already have an account ?</p>

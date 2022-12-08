@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from '../../redux/store'
 import { openModal } from '../../redux/modelSlice';
 
 import { Link } from "react-router-dom"
-import SignoutButton from '../SignoutButton/SignoutButton';
+import SignoutButton from '../../auth/SignoutButton/SignoutButton';
 import { FaUserCircle } from 'react-icons/fa';
 import './account-entry-point.scss'
 
