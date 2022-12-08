@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { useAppSelector } from '../redux/store'
+import { useAppSelector, useAppDispatch } from '../redux/store'
+import { openModal } from '../redux/modelSlice';
+
 import { Link } from "react-router-dom"
 import SignoutButton from './SignoutButton';
 import { FaUserCircle } from 'react-icons/fa';
@@ -8,6 +10,7 @@ import '../style/account-entry-point.scss'
 const AccountEntryPoint = () => {
 
     const { currentUser, userAvatar } = useAppSelector(state => state.redux)
+    const dispatch = useAppDispatch()
 
     if ( currentUser ) {
         return (
@@ -25,8 +28,18 @@ const AccountEntryPoint = () => {
     else {
         return (
             <div className='entry-point'>
-                <Link to="/login" className='g-auth-button'>Login</Link>
-                <Link to="/signup" className='g-auth-button'>Sign Up</Link>
+                <Link 
+                    to="/login" 
+                    className='g-auth-button' 
+                    onClick={() => dispatch(openModal())}>
+                        Login
+                </Link>
+                <Link 
+                    to="/signup" 
+                    className='g-auth-button' 
+                    onClick={() => dispatch(openModal())}>
+                        Sign Up
+                </Link>
             </div>
         )
     }

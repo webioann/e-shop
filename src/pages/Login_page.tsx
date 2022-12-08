@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { setCurrentUser, setUserAvatar } from '../redux/reduxState'
+import { openModal, closeModal } from '../redux/modelSlice';
 import { Link, useNavigate } from 'react-router-dom'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
 import Popup from '../components/Popup'
+import ModalCloseButton from '../components/ModalCloseButton'
 import { signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth"
-// import { doc, setDoc } from 'firebase/firestore'
-import { auth, provider, db } from '../firebase.config';
+import { auth, provider } from '../firebase.config';
 import '../style/signup-page.scss'
 
 const Login_page = () => {
@@ -19,18 +20,10 @@ const Login_page = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            console.log(`UID === ${user.email}`)
-            dispatch(setCurrentUser(user.email))
-            dispatch(setUserAvatar(user.photoURL))
-        } 
-    })
-
     const loginWithEmail = async () => {
         try {
             const user = await signInWithEmailAndPassword(auth, email, password)
-            navigate("/")
+            navigate(-1)
             dispatch(setCurrentUser(user.user.email))
         }
         catch(error){
@@ -44,7 +37,7 @@ const Login_page = () => {
             const user = await signInWithPopup(auth, provider)
             dispatch(setCurrentUser(user.user.email))
             dispatch(setUserAvatar(user.user.photoURL))
-            navigate('/')
+            navigate(-1)
         }
         catch(error) {console.error(error)} 
     }
@@ -60,6 +53,7 @@ const Login_page = () => {
     return (
         <div className={`signup-wrapper`}>
             <h1 className='header'>Login</h1>
+            <ModalCloseButton/>
             <form onSubmit={event => event.preventDefault() }>
                 { warning && <Popup closePopup={closePopup}/>}
                 <div className='email-box'>
@@ -97,7 +91,15 @@ const Login_page = () => {
             </form>
             <div className='question'>
                 <p className='question-text'>Don't have an account ?</p>
-                <Link to='/signup' className='question-link'>Sign Up</Link>
+                <Link 
+                    to='/signup' 
+                    className='question-link'
+                    onClick={async() => {
+                        await dispatch(closeModal())
+                        dispatch(openModal())
+                    }}>
+                        Sign Up
+                </Link>
             </div>        
         </div>
     )}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { incremented } from '../redux/modelSlice';
+import { incremented, openModal } from '../redux/modelSlice'
 import { Link } from "react-router-dom"
 import { IoCartOutline } from 'react-icons/io5';
 import '../style/cart-icon.scss'
@@ -17,7 +17,10 @@ const CartIcon = () => {
                 <IoCartOutline 
                     size={24}
                     color='#212529' 
-                    onClick={() => dispatch(incremented())}
+                    onClick={() => {
+                        dispatch(incremented())
+                        dispatch(openModal())
+                    }}
                 />
             </Link>
         </div>

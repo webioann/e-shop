@@ -14,13 +14,16 @@ export const modelSlice = createSlice({
     initialState,
     reducers: {
         incremented: (state) => {state.cartCount = state.cartCount + 1},
-        modalVisibilityController: (state) => {state.modalVisibility = !state.modalVisibility}
+        closeModal: (state) => {state.modalVisibility = false},
+        openModal: (state) => {state.modalVisibility = true},
     }
 });
 
 export const { 
     incremented,
-    modalVisibilityController,
+    closeModal,
+    openModal
+
 } = modelSlice.actions;
 
 export default modelSlice.reducer;

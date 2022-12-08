@@ -1,0 +1,13 @@
+@import './@index.scss';
+
+.cart-page{
+    width: 200px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $bg-light;
+    border-radius: 0.5rem;
+    z-index: 3;
+    position: relative;
+}

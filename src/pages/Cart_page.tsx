@@ -1,8 +1,13 @@
 import React from 'react'
+import ModalCloseButton from '../components/ModalCloseButton'
+import '../style/cart-page.scss'
 
 const Cart_page = () => {
     return (
-        <div>Cart_page</div>
+        <div className='cart-page'>
+            <ModalCloseButton/>
+            <p>Cart_page</p>
+        </div>
     )
 }
 

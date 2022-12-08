@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
 import { setCurrentUser, setUserAvatar } from '../redux/reduxState'
+import { openModal, closeModal } from '../redux/modelSlice'
 import { Link, useNavigate } from 'react-router-dom'
 import { HiOutlineMail } from 'react-icons/hi'
 import { GoEye,GoEyeClosed } from 'react-icons/go'
 import Popup from '../components/Popup'
+import ModalCloseButton from '../components/ModalCloseButton'
 import { createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth"
 // import { doc, setDoc } from 'firebase/firestore'
 import { auth, provider, db } from '../firebase.config';
@@ -18,17 +20,6 @@ const Signup_page = () => {
     const [warning,setWarning] = useState<boolean>(false)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //         console.log(`UID === ${user.email}`)
-    //         // dispatch(setCurrentUser(user.email))
-    //         // dispatch(setUserAvatar(user.photoURL))
-    //     } 
-    //     else{
-    //         console.log(`USER LOGOUT`);
-    //     }
-    // })
 
     const emailRegistration = async () => {
         try {
@@ -63,6 +54,7 @@ const Signup_page = () => {
     return (
         <div className={`signup-wrapper`}>
             <h1 className='header'>Sign Up</h1>
+            <ModalCloseButton/>
             <form onSubmit={event => event.preventDefault() }>
                 { warning && <Popup closePopup={closePopup}/>}
                 <div className='email-box'>
@@ -98,7 +90,15 @@ const Signup_page = () => {
             </form>
             <div className='question'>
                 <p className='question-text'>Already have an account ?</p>
-                <Link to='/login' className='question-link'>Login</Link>
+                <Link 
+                    to='/login' 
+                    className='question-link'
+                    onClick={async() => {
+                        await dispatch(closeModal())
+                        dispatch(openModal())
+                    }}>
+                        Login
+                    </Link>
             </div>
         </div>
     )

@@ -3,9 +3,13 @@
 .signup-wrapper{
     width: 290px;
     margin: 0 auto;
-    padding: 100px 1rem 2rem 1rem;
+    padding: 50px 1rem 2rem 1rem;
     padding-bottom: 20px;
     color: $text-dark;
+    background-color: $bg-light;
+    border-radius: 0.5rem;
+    z-index: 3;
+    position: relative;
     .header{
         font-weight: 600;
     }
