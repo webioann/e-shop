@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector,useDispatch,TypedUseSelectorHook } from "react-redux"
 import reduxState  from './reduxState'
+import modelSlice from './modelSlice'
 
 const store = configureStore({
     reducer: {
-        redux: reduxState
+        redux: reduxState,
+        model: modelSlice,
     }
 })
 

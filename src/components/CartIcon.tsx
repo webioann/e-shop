@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/store'
-import { incremented } from '../redux/reduxState';
+import { incremented } from '../redux/modelSlice';
 import { Link } from "react-router-dom"
 import { IoCartOutline } from 'react-icons/io5';
 import '../style/cart-icon.scss'
 
 const CartIcon = () => {
 
-    const cartCount = useAppSelector(state => state.redux.cartCount)
+    const cartCount = useAppSelector(state => state.model.cartCount)
     const dispatch = useAppDispatch()
 
     return (

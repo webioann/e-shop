@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
 import Container from './Container'
-import ModalWrapper from './ModalWrapper'
+import ModalPortal from './ModalPortal'
 import Main from './Main'
 import Header from './Header'
 import Footer from './Footer'
@@ -29,11 +29,7 @@ const  App: React.FC = () => {
           <Route path="account" element={<Account_page />} />
           <Route path="checkout" element={<Checkout_page />} />
           <Route path="login" element={<Login_page />} />
-          <Route path="signup" element={
-            <ModalWrapper>
-              <Signup_page />
-            </ModalWrapper>
-          } />
+          <Route path="signup" element={<Signup_page />} />
           <Route path="*" element={<Notfound_page />} />
         </Routes>
       </Main>
