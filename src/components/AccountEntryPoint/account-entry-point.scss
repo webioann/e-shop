@@ -3,27 +3,22 @@
 .entry-point{
     max-width: $max-mobile;
     display: flex;
+    justify-content: center;
     align-items: center;
+    justify-content: space-between;
     border: 1px solid red;
-    .account{
-        min-width: 200px;
-        // height: 30px;
-        // margin-top: 1rem;
-        // padding: 3px 0.5rem;
+    .linkon-account{
         display: flex;
         align-items: center;
-        // border-radius: 0.5rem;
-        // font-weight: 700;
         cursor: pointer;
         box-shadow: $box-shadow-lt;
         color: $text-dark;
-    
         .img-wrapper{
             width: 24px;
             height: 24px;
             border-radius: 50%;
             overflow: hidden;
-            // margin-right: 0.5rem;
+            margin-right: 5px;
             display: flex;
             justify-content: center;
             align-items: center;

@@ -15,7 +15,7 @@ const AccountEntryPoint = () => {
     if ( currentUser ) {
         return (
             <div className='entry-point'>
-                <Link to="/account" className='account'>
+                <Link to="/account" className='linkon-account'>
                     <div className='img-wrapper'>
                         { userAvatar !== null ? (<img src={userAvatar} alt='user photo'/>) : <FaUserCircle size={24}/> }
                     </div>

@@ -1,86 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '../../redux/store'
-import { setCurrentUser, setUserAvatar } from '../../redux/reduxState'
+import React, { useState } from 'react'
+import { useAppDispatch } from '../../redux/store'
 import { openModal, closeModal } from '../../redux/modelSlice';
-import { Link, useNavigate } from 'react-router-dom'
-import { HiOutlineMail } from 'react-icons/hi'
-import { GoEye,GoEyeClosed } from 'react-icons/go'
+import { Link } from 'react-router-dom'
 import Popup from '../../components/Popup/Popup'
 import SigninWithGoogle from '../../auth/Signin/SigninWithGoogle'
-import FormRegistration from '../../auth/FormRegistration/FormRegistration';
+import FormRegistration from '../../auth/FormRegistration/FormRegistration'
+import LoginWithEmail from '../../auth/LoginWithEmail/LoginWithEmail';
 import ModalCloseButton from '../../components/ModalCloseButton/ModalCloseButton'
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from '../../firebase.config';
 import './login-page.scss'
 
 const Login_page = () => {
 
     const [email,setEmail] = useState<string>('')
     const [password,setPassword] = useState<string>('')
-    const [inputType,setInputType] = useState<string>('password')
     const [warning,setWarning] = useState<boolean>(false)
-    const navigate = useNavigate()
     const dispatch = useAppDispatch()
-
-    const loginWithEmail = async () => {
-        try {
-            const user = await signInWithEmailAndPassword(auth, email, password)
-            navigate(-1)
-            dispatch(setCurrentUser(user.user.email))
-        }
-        catch(error){
-            console.log(error)
-            setWarning(true)
-        }
-    }
-
-    const showPassword = () => {
-        inputType === 'password' ? setInputType('text') : setInputType('password')
-    }
     
-    const closePopup = () => {
-        setWarning(false)
-    }
+    const closePopup = () => setWarning(false)
     
     return (
-        <div className={`signup-wrapper`}>
-            <h1 className='header'>Login</h1>
+        <div className={`login-page`}>
+            <h1 className='auth-header'>Login</h1>
             <ModalCloseButton/>
-
-            <FormRegistration/>
-
-            <form onSubmit={event => event.preventDefault() }>
-                { warning && <Popup closePopup={closePopup}/>}
-                <div className='email-box'>
-                    <label>Email</label>
-                    <div className='email-input-box'>
-                        <input 
-                            type='email' 
-                            placeholder='email'
-                            value={email}
-                            onChange={event => setEmail(event.target.value)}/>
-                        <HiOutlineMail className='input-icon'/>
-                    </div>
-                </div>
-                <div className='password-box'>
-                    <label>Password</label>
-                    <div className='password-input-box'>
-                        <input 
-                            type={inputType} 
-                            placeholder='password'
-                            value={password}
-                            onChange={event => setPassword(event.target.value)}/>
-                        {inputType === 'text' 
-                            ? <GoEye className='input-icon' onClick={showPassword}/> 
-                            : <GoEyeClosed className='input-icon' onClick={showPassword}/>
-                        }
-                    </div>
-                </div>
-
-            </form>
-            <button className='auth-button' onClick={loginWithEmail}>
-                Login with email
-            </button>
+            { warning && <Popup closePopup={closePopup}/>}
+            <FormRegistration setEmail={setEmail} setPassword={setPassword}/>
+            <LoginWithEmail email={email} password={password} setWarning={setWarning}/>
             <div className='or-line'>---- or other variant ----</div>
             <SigninWithGoogle/>
             <div className='question'>

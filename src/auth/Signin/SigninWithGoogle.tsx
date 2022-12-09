@@ -17,7 +17,7 @@ const SigninWithGoogle = () => {
             const user = await signInWithPopup(auth, provider)
             dispatch(setCurrentUser(user.user.email))
             dispatch(setUserAvatar(user.user.photoURL))
-            navigate(-1)
+            navigate("/")
         }
         catch(error) {console.error(error)} 
     }

@@ -20,7 +20,7 @@ const SignoutButton = () => {
 
     return (
         <button onClick={signOutUser} className='g-auth-button'>
-            Sing Out
+            Singout
         </button>
     )
 }

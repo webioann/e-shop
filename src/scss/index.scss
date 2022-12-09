@@ -48,7 +48,7 @@ $bg-block-dark: #3c4043;
 $button-max-size: 120px;
 $button-min-size: 90px;
 $button-big: 180px;
-$max-mobile: 290px;
+$max-mobile: 320px;
 $br-medium: 6px;
 // === GLOBAL CLASSES ===
 .g-stretched{
@@ -60,7 +60,7 @@ $br-medium: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 5px 10px;
     border-radius: $br-medium;
     color: $text-blue;
     font-weight: 700;

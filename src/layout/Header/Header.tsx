@@ -1,19 +1,11 @@
-import React, { useState } from 'react'
-import { Link } from "react-router-dom"
-import AccountEntryPoint from '../../components/AccountEntryPoint/AccountEntryPoint'
-import CartIcon from '../../components/CartIcon/CartIcon'
+import React from 'react'
+import { IChildrenProps } from '../../types/global.types'
 import './header.scss'
 
-const Header = () => {
+const Header: React.FC<IChildrenProps> = ({ children }) => {
     return (
         <header className='header'>
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/shop">Shop</Link>
-            </nav>
-            
-            <AccountEntryPoint/>
-            <CartIcon/>
+            { children }
         </header>
     )
 }

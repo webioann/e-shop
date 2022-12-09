@@ -14,12 +14,19 @@ import ProductDetails_page from '../pages/ProductDetails/ProductDetails_page'
 import Shop_page from '../pages/Shop/Shop_page'
 import Signup_page from '../pages/Signup/Signup_page'
 import Notfound_page from '../pages/Notfound/Notfound_page'
+import Navigation from '../layout/Navigation/Navigation'
+import AccountEntryPoint from '../components/AccountEntryPoint/AccountEntryPoint'
+import CartIcon from '../components/CartIcon/CartIcon'
 
 const  App: React.FC = () => {
   
   return (
     <Container>
-      <Header/>
+      <Header>
+        <Navigation/>
+        <AccountEntryPoint/>
+        <CartIcon/>
+      </Header>
       <Main>
         <Routes>
           <Route path="/" element={<Home_page />} />
@@ -30,9 +37,11 @@ const  App: React.FC = () => {
               <Cart_page />
             </ModalPortal>
           }/>
-
-          <Route path="account" element={<Account_page />} />
-          <Route path="checkout" element={<Checkout_page />} />
+          <Route path="account" element={
+            <ModalPortal>
+              <Account_page />
+            </ModalPortal>
+          }/>
           <Route path="login" element={
             <ModalPortal>
               <Login_page />
@@ -43,8 +52,7 @@ const  App: React.FC = () => {
               <Signup_page />
             </ModalPortal>
           }/>
-
-
+          <Route path="checkout" element={<Checkout_page />} />
           <Route path="*" element={<Notfound_page />} />
         </Routes>
       </Main>
