@@ -1,9 +1,22 @@
 import React from 'react'
+import { useFetchProductsQuery } from '../../redux/fakestoreApi'
 
 const Shop_page = () => {
-    return (
-        <div>Shop_page</div>
-    )
+
+    const { data: products } = useFetchProductsQuery('')
+
+    if( products ) {
+        return (
+            <ul>
+                {products.map((product) => (
+                    <li >{ product.price } $
+
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+    else { return null }
 }
 
 export default Shop_page;

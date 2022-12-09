@@ -1,7 +1,7 @@
-import React from 'react'
-import { useAppDispatch } from '../../redux/store'
+import React, { useEffect } from 'react'
+import { useAppSelector, useAppDispatch } from '../../redux/store'
 import { setCurrentUser, setUserAvatar } from '../../redux/reduxState'
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../firebase.config'
 import { IAuthButtonProps } from '../../types/auth.types'
@@ -10,6 +10,15 @@ import './login-with-email.scss'
 const LoginWithEmail: React.FC<IAuthButtonProps> = ({ email, password, setWarning }) => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+    const currentUser = useAppSelector(state => state.redux.currentUser)
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            console.log(`USER === ${user?.displayName}`)
+            console.log('AUTH');
+        })
+        console.log(`currentUser === ${currentUser}`)
+
+    }, [auth])
 
     const loginWithEmail = async () => {
         try {
