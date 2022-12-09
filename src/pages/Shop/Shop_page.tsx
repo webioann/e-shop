@@ -1,5 +1,7 @@
 import React from 'react'
 import { useFetchProductsQuery } from '../../redux/fakestoreApi'
+import ProductCard from '../../layout/ProductCard/ProductCard'
+import './shop-page.scss'
 
 const Shop_page = () => {
 
@@ -7,13 +9,13 @@ const Shop_page = () => {
 
     if( products ) {
         return (
-            <ul>
-                {products.map((product) => (
-                    <li >{ product.price } $
-
-                    </li>
-                ))}
-            </ul>
+            <section className='shop-page'>
+                <ul className='product-list'>
+                    {products.map((product) => (
+                        <ProductCard product={product}/>
+                    ))}
+                </ul>
+            </section>
         )
     }
     else { return null }
