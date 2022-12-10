@@ -1,6 +1,5 @@
 import React from 'react'
 import { useAppDispatch } from '../../redux/store'
-import { setCurrentUser, setUserAvatar } from '../../redux/reduxState'
 import { useNavigate } from 'react-router-dom'
 import { auth, provider } from '../../firebase.config';
 import { signInWithPopup } from "firebase/auth"
@@ -15,8 +14,6 @@ const SigninWithGoogle = () => {
     const googleRegistration = async () => {
         try {
             const user = await signInWithPopup(auth, provider)
-            dispatch(setCurrentUser(user.user.email))
-            dispatch(setUserAvatar(user.user.photoURL))
             navigate("/")
         }
         catch(error) {console.error(error)} 

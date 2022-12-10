@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch } from '../../redux/store'
-import { removeCurrentUser, deleteUserAvatar } from '../../redux/reduxState'
+import { deleteCurrentUser } from '../../redux/authSlice'
 import { signOut } from "firebase/auth"
 import { auth } from '../../firebase.config';
 import './signout-button.scss'
@@ -12,8 +12,7 @@ const SignoutButton = () => {
     const signOutUser = async () => {
         try {
             await signOut(auth)
-            dispatch(removeCurrentUser())
-            dispatch(deleteUserAvatar())
+            dispatch(deleteCurrentUser())
         }
         catch(error) {console.log(error)}
     }

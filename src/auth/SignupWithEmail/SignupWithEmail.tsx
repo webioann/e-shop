@@ -1,6 +1,5 @@
 import React from 'react'
 import { useAppDispatch } from '../../redux/store'
-import { setCurrentUser, setUserAvatar } from '../../redux/reduxState'
 import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../../firebase.config'
@@ -15,7 +14,6 @@ const SignupWithEmail: React.FC<IAuthButtonProps> = ({ email, password, setWarni
     const emailRegistration = async () => {
         try {
             const user = await createUserWithEmailAndPassword(auth, email, password)
-            dispatch(setCurrentUser(user.user.email))
             navigate("/")
         }
         catch(error){

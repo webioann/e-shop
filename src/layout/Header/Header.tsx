@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from '../../redux/store'
 
 const Header: React.FC<IChildrenProps> = ({ children }) => {
 
-    const { currentUser, userAvatar } = useAppSelector(state => state.redux)
+    const { currentUser, userAvatar } = useAppSelector(state => state.auth)
 
     return (
         <header className={ currentUser ? 'header red' : 'header' }>
