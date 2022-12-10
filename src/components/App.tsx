@@ -1,7 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
 import Container from '../layout/Container/Container'
-import ModalPortal from '../layout/ModalPortal/ModalPortal'
 import Main from '../layout/Main/Main'
 import Header from '../layout/Header/Header'
 import Footer from '../layout/Footer/Footer'
@@ -32,26 +31,10 @@ const  App: React.FC = () => {
           <Route path="/" element={<Home_page />} />
           <Route path="shop" element={<Shop_page />} />
           <Route path="shop/:id" element={<ProductDetails_page />} />
-          <Route path="cart" element={
-            <ModalPortal>
-              <Cart_page />
-            </ModalPortal>
-          }/>
-          <Route path="account" element={
-            <ModalPortal>
-              <Account_page />
-            </ModalPortal>
-          }/>
-          <Route path="login" element={
-            <ModalPortal>
-              <Login_page />
-            </ModalPortal>
-          }/>
-          <Route path="signup" element={
-            <ModalPortal>
-              <Signup_page />
-            </ModalPortal>
-          }/>
+          <Route path="cart" element={<Cart_page />}/>
+          <Route path="account" element={<Account_page />}/>
+          <Route path="login" element={<Login_page />}/>
+          <Route path="signup" element={<Signup_page />}/>
           <Route path="checkout" element={<Checkout_page />} />
           <Route path="*" element={<Notfound_page />} />
         </Routes>
@@ -60,5 +43,4 @@ const  App: React.FC = () => {
     </Container>
   )
 }
-
 export default App;
