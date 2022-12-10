@@ -12,7 +12,7 @@ const Shop_page = () => {
             <section className='shop-page'>
                 <ul className='product-list'>
                     {products.map((product) => (
-                        <ProductCard product={product}/>
+                        <ProductCard product={product} key={product.id}/>
                     ))}
                 </ul>
             </section>
