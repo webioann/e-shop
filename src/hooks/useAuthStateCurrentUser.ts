@@ -25,7 +25,6 @@ export const useAuthStateCurrentUser = () => {
                     userID: user.uid,
                     userPhotoURL: user.photoURL,
                 }))
-                console.log(user)
             }
             else{
                 dispatch(deleteCurrentUser())
