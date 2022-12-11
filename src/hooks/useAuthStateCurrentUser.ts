@@ -1,26 +1,26 @@
 import { useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '../redux/store'
+import { useAppDispatch } from '../redux/store'
 import { createCurrentUser, deleteCurrentUser } from '../redux/authSlice'
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from '../firebase.config'
 
-export const useCreateCurrentUserData = () => {
+export const useAuthStateCurrentUser = () => {
 
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if( user ) {
-                let extractName;
+                let extractNameWithBigFirstLetter;
                 if( user.displayName === null && user.email) {
-                    let rawName = user.email?.substring(0,user.email.indexOf('@'))
-                    extractName = rawName?.charAt(0).toUpperCase() + rawName?.slice(1)
+                    let extractName = user.email?.substring(0,user.email.indexOf('@'))
+                    extractNameWithBigFirstLetter = extractName?.charAt(0).toUpperCase() + extractName?.slice(1)
                 }
                 else{
-                    extractName = user.displayName 
+                    extractNameWithBigFirstLetter = user.displayName 
                 }
                 dispatch(createCurrentUser({
-                    userName: extractName,
+                    userName: extractNameWithBigFirstLetter,
                     email: user.email,
                     userID: user.uid,
                     userPhotoURL: user.photoURL,

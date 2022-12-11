@@ -16,11 +16,11 @@ import Notfound_page from '../pages/Notfound/Notfound_page'
 import Navigation from '../layout/Navigation/Navigation'
 import AccountEntryPoint from '../components/AccountEntryPoint/AccountEntryPoint'
 import CartIcon from '../components/CartIcon/CartIcon'
-import { useCreateCurrentUserData } from '../hooks/useCreateCurrentUserData'
+import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
 
 const  App: React.FC = () => {
 
-  useCreateCurrentUserData();
+  useAuthStateCurrentUser();
 
   return (
     <Container>

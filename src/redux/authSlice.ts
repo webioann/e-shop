@@ -1,5 +1,4 @@
-import { createSlice,PayloadAction } from "@reduxjs/toolkit"
-import { ICurrentUserData } from "../types/auth.types"
+import { createSlice } from "@reduxjs/toolkit"
 
 interface ICurrentUser {
     currentUser_Name: string | null
@@ -13,12 +12,7 @@ type InitialStateType = {
 }
 
 const initialState: InitialStateType = {
-    currentUser: {
-        currentUser_Name: null,
-        currentUser_Email: null,
-        currentUser_ID: null,
-        currentUser_PhotoURL: null
-    }
+    currentUser: null
 }
 
 export const authSlice = createSlice({
@@ -36,10 +30,8 @@ export const authSlice = createSlice({
         deleteCurrentUser: (state) => {
             state.currentUser = null
         },
-
     }
 });
 
 export const { createCurrentUser, deleteCurrentUser } = authSlice.actions;
-
 export default authSlice.reducer;
