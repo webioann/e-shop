@@ -5,7 +5,7 @@ import Main from './Main'
 import Header from './Header'
 import Footer from './Footer'
 import Home_page from './Home_page'
-import Account_page from './Account_page'
+import Account_page from './Profile_page'
 import Cart_page from './Cart_page'
 import Checkout_page from './Checkout_page'
 import Login_page from './Login_page'
@@ -17,10 +17,12 @@ import Navigation from './Navigation'
 import AccountEntryPoint from './AccountEntryPoint'
 import CartIcon from './CartIcon'
 import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
+import { useAppSelector } from '../redux/store'
 
 const  App: React.FC = () => {
 
   useAuthStateCurrentUser();
+  const currentUser = useAppSelector(state => state.auth.currentUser)
 
   return (
     <Container>
@@ -35,11 +37,11 @@ const  App: React.FC = () => {
           <Route path="shop" element={<Shop_page />} />
           <Route path="shop/:id" element={<ProductDetails_page />} />
           <Route path="cart" element={<Cart_page />}/>
-          <Route path="account" element={<Account_page />}/>
           <Route path="login" element={<Login_page />}/>
           <Route path="signup" element={<Signup_page />}/>
-          <Route path="checkout" element={<Checkout_page />} />
           <Route path="*" element={<Notfound_page />} />
+          { currentUser &&  <Route path="profile" element={<Account_page />}/>}
+          { currentUser &&  <Route path="checkout" element={<Checkout_page />} />}
         </Routes>
       </Main>
       <Footer/>

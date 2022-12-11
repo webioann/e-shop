@@ -16,7 +16,10 @@ const AccountEntryPoint = () => {
     if ( currentUser ) {
         return (
             <div className='entry-point'>
-                <Link to="/account" className='linkon-account'>
+                <Link 
+                    to="/profile" 
+                    className='linkon-account'
+                    onClick={() => dispatch(openModal())}>
                     <div className='img-wrapper'>
                         { userAvatar ? (<img src={userAvatar} alt='user photo'/>) : <FaUserCircle size={24}/> }
                     </div>

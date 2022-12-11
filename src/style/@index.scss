@@ -4,6 +4,7 @@
 html,body{
     font-family: 'Lato', Helvetica, sans-serif; 
     background-color: #ffffff;
+    color: #212529;
     width: 100%;
     scroll-behavior: smooth;
     height: 100%;
@@ -33,7 +34,6 @@ $text-blue: #5388cd;
 
 $bg-hover: rgba(0,0,0,0.1);
 $bg-active: rgba(0,0,0,0.2);
-$spark-line: #5388cd;
 
 // ===== light theme =====
 $bg-light: #ffffff;
