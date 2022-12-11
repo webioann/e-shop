@@ -1,0 +1,19 @@
+@import './@index.scss';
+
+.header{
+    padding: $big-pad;
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 640px) {
+    .header{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    
+    }
+}
+
+.red{
+    background-color: red;
+}
