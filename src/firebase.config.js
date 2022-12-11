@@ -3,12 +3,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth"
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAySCOkx3ak5W4rgez_y0Bpfrs-cIu2DW8",
-    authDomain: "e-commerce-a0fe7.firebaseapp.com",
-    projectId: "e-commerce-a0fe7",
-    storageBucket: "e-commerce-a0fe7.appspot.com",
-    messagingSenderId: "618037609514",
-    appId: "1:618037609514:web:76f57f3ddba51b2913af53"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
