@@ -10,7 +10,7 @@ const AccountEntryPoint = () => {
 
     const currentUser = useAppSelector(state => state.auth.currentUser)
     const userAvatar = useAppSelector(state => state.auth?.currentUser?.currentUser_PhotoURL)
-    const userName = useAppSelector(state => state.auth?.currentUser?.currentUser_DisplayName)
+    const userName = useAppSelector(state => state.auth?.currentUser?.currentUser_Name)
     const dispatch = useAppDispatch()
 
     if ( currentUser ) {
@@ -20,7 +20,7 @@ const AccountEntryPoint = () => {
                     <div className='img-wrapper'>
                         { userAvatar ? (<img src={userAvatar} alt='user photo'/>) : <FaUserCircle size={24}/> }
                     </div>
-                    <span className='user-name'>{userName}tt</span>
+                    <span className='user-name'>Hi, {userName}</span>
                 </Link>
                 <SignoutButton/>
             </div>

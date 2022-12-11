@@ -11,13 +11,21 @@ export const useCreateCurrentUserData = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if( user ) {
+                let extractName;
+                if( user.displayName === null && user.email) {
+                    let rawName = user.email?.substring(0,user.email.indexOf('@'))
+                    extractName = rawName?.charAt(0).toUpperCase() + rawName?.slice(1)
+                }
+                else{
+                    extractName = user.displayName 
+                }
                 dispatch(createCurrentUser({
-                    userName: user.displayName,
-                    displayName: user.displayName,
+                    userName: extractName,
                     email: user.email,
                     userID: user.uid,
                     userPhotoURL: user.photoURL,
                 }))
+                console.log(user)
             }
             else{
                 dispatch(deleteCurrentUser())

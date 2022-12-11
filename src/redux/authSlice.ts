@@ -3,7 +3,6 @@ import { ICurrentUserData } from "../types/auth.types"
 
 interface ICurrentUser {
     currentUser_Name: string | null
-    currentUser_DisplayName: string | null
     currentUser_Email: string | null
     currentUser_ID: string | null
     currentUser_PhotoURL: string | null
@@ -16,7 +15,6 @@ type InitialStateType = {
 const initialState: InitialStateType = {
     currentUser: {
         currentUser_Name: null,
-        currentUser_DisplayName: null,
         currentUser_Email: null,
         currentUser_ID: null,
         currentUser_PhotoURL: null
@@ -30,11 +28,9 @@ export const authSlice = createSlice({
         createCurrentUser: (state, actions) => {
             state.currentUser = {
                 currentUser_Name: actions.payload.userName, 
-                currentUser_DisplayName: actions.payload.displayName,
                 currentUser_Email: actions.payload.email,
                 currentUser_ID: actions.payload.userID,
                 currentUser_PhotoURL: actions.payload.userPhotoURL,
-    
             }
         },
         deleteCurrentUser: (state) => {
