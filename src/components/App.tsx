@@ -16,6 +16,7 @@ import Notfound_page from './Notfound_page'
 import Navigation from './Navigation'
 import AccountEntryPoint from './AccountEntryPoint'
 import CartIcon from './CartIcon'
+import TEST from './TEST'
 import { useAuthStateCurrentUser } from '../hooks/useAuthStateCurrentUser'
 import { useAppSelector } from '../redux/store'
 
@@ -32,6 +33,7 @@ const  App: React.FC = () => {
         <CartIcon/>
       </Header>
       <Main>
+        <TEST/>
         <Routes>
           <Route path="/" element={<Home_page />} />
           <Route path="shop" element={<Shop_page />} />
